@@ -3,7 +3,7 @@ additional_prompt: null
 modality: "text"
 out_dir: "results"
 dataset_dir: "datasets/partnet-mobility-v0/dataset"
-api_key: "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"
+api_key: 
 parallel: 1
 max_load_per_gpu: 10
 obj_ids: null
