@@ -23,4 +23,4 @@ datasets/.gitattributes
 /SLURM_execution/
 /git_script/
 /articulate_anything/co-tracker
-conf/config.yaml
+conf/.env
