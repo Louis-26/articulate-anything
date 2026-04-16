@@ -169,13 +169,14 @@ class GPTWrapper:
     def _format_content(self, prompt_parts):
         """Format content for OpenAI API, handling both text and images"""
         if not isinstance(prompt_parts, list):
-            return prompt_parts  # Return as is if it's just a string
-
+            # return prompt_parts # original
+            return [{"type": "text", "text": prompt_parts}] # new
         formatted_content = []
         
         for part in prompt_parts:
             if isinstance(part, str):
-                formatted_content.append(part)
+                # formatted_content.append(part)  # original
+                formatted_content.append({"type": "text", "text": part}) # new
             elif isinstance(part, Image.Image):
                 # Convert PIL Image to base64 and format for OpenAI
                 base64_image = self._encode_image_to_base64(part)

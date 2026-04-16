@@ -17,3 +17,9 @@ imgui.ini
 *.zip
 *scans
 *.pkl
+
+datasets/.gitattributes
+
+/SLURM_execution/
+/git_script/
+/articulate_anything/co-tracker

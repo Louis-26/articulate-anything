@@ -3,13 +3,14 @@ additional_prompt: null
 modality: "text"
 out_dir: "results"
 dataset_dir: "datasets/partnet-mobility-v0/dataset"
-api_key: null
+api_key: "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"
 parallel: 1
 max_load_per_gpu: 10
 obj_ids: null
 gpu_id: 0
 cam_view: frontview
-model_name: gemini-1.5-flash-latest
+# model_name: gemini-1.5-flash-latest
+model_name: gpt-4o
 link_placement_path: null
 gen_config:
   overwrite: false # whether to overwrite the VLM output

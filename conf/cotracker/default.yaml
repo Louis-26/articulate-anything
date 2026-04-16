@@ -1,5 +1,6 @@
 mode: online # (online, offline). Offline uses more memory
-checkpoint_path: "../co-tracker/checkpoints/cotracker2.pth"
+# checkpoint_path: "../co-tracker/checkpoints/cotracker2.pth"
+checkpoint_path: "articulate_anything/co-tracker/checkpoints/cotracker2.pth"
 grid_size: 30
 render_all: false
 displacement_threshold: null
