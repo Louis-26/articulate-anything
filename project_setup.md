@@ -31,9 +31,13 @@ hf download vlongle/articulate-anything-dataset-preprocessed --repo-type dataset
 cd datasets
 mv partnet-mobility-v0-processed.zip partnet-mobility-v0.zip
 mkdir partnet-mobility-v0
-# UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE unzip partnet-mobility-v0.zip 
+# this will generate 499498 files in total, make sure the server can support that
+UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE unzip partnet-mobility-v0.zip 
+```
 
-# just select 100 objects out of 2347 objects to unzip, otherwise it will exceed the disk quota 
+
+if file number is strictly limited, just select 100 objects out of 2347 objects to unzip, otherwise it will exceed the disk quota 
+```bash
 unzip -Z1 partnet-mobility-v0.zip 'partnet-mobility-v0/dataset/*/' \
   | awk -F/ '{print $3}' | awk '!seen[$0]++ && NF' | head -n 100 \
   | xargs -I{} unzip -q partnet-mobility-v0.zip "partnet-mobility-v0/dataset/{}/*"
@@ -83,7 +87,7 @@ checkpoint_path: "articulate_anything/co-tracker/checkpoints/cotracker2.pth"
 python articulate.py modality=partnet prompt=693 out_dir=results additional_prompt=joint_0
 ```
 
-## ⌛🖋 Text Articulation
+## ✅🖋 Text Articulation
 
 ```bash
 cd $(git rev-parse --show-toplevel)
@@ -92,8 +96,8 @@ python articulate_anything/preprocess/preprocess_partnet.py parallel=4 modality=
 pip install openai==1.30.5
 
 # articulate
-# need all data to be present
-python articulate.py modality=text  prompt="suitcase with a retractable handle" out_dir=results/text/suitcase joint_actor.targetted_affordance=false
+
+python articulate.py modality=text prompt="suitcase with a retractable handle" out_dir=results/text/suitcase joint_actor.mode=text joint_actor.targetted_affordance=false
 
 ```
 
