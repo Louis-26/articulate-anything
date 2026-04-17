@@ -450,4 +450,6 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.launch(share=True, server_name="0.0.0.0")
+    app.launch(share=True,
+               show_api=False, 
+               server_name="0.0.0.0")

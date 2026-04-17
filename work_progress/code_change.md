@@ -29,3 +29,20 @@ def _format_content(self, prompt_parts):
     
     return formatted_content
 ```
+
+gradio_app.py
+```python
+# line 451-454
+# original
+if __name__ == "__main__":
+    app = create_app()
+    app.launch(share=True,
+               server_name="0.0.0.0")
+# new
+if __name__ == "__main__":
+    app = create_app()
+    app.launch(share=True,
+               show_api=False, 
+               server_name="0.0.0.0")
+
+```

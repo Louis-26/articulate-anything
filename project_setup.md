@@ -2,7 +2,7 @@
 GPU device: A100
 cuda version: 12.8
 
-# step 1: set up the environment
+# ✅step 1: set up the environment
 enable an interactive session on GPU cluster first, then
 ```bash    
 conda create -n articulate-anything python=3.9 -y
@@ -17,7 +17,7 @@ python -c "import hydra; print(hydra.__version__)"
 # adjust version
 pip install huggingface_hub==0.23.5
 ```
-# step 2: prepare dataset
+# ✅step 2: prepare dataset
 ```bash
 cd $(git rev-parse --show-toplevel)
 pip install huggingface_hub
@@ -47,7 +47,7 @@ unzip -Z1 partnet-mobility-v0.zip 'partnet-mobility-v0/dataset/*/' \
 ```
 
 
-# step 3: preprocess
+# ✅step 3: preprocess
 
 ```bash
 conda activate articulate-anything
@@ -58,14 +58,14 @@ cd "$(git rev-parse --show-toplevel)/articulate_anything/preprocess"
 python preprocess_partnet.py parallel=4 modality=text obj_ids=693 dataset_dir=../../datasets/partnet-mobility-v0/dataset 
 ```
 
-# step 4: demo
+# ❌step 4: demo
 ```bash
 cd $(git rev-parse --show-toplevel)
 python gradio_app.py # ❌ not working for some reason
 ```
 
 
-# Experiment
+# ✅Experiment
 download cotracker2.pth
 ```bash
 cd "$(git rev-parse --show-toplevel)/articulate_anything"
@@ -101,9 +101,12 @@ python articulate.py modality=text prompt="suitcase with a retractable handle" o
 
 ```
 
-## 🖼 / 🎥 Visual Articulation
+## ✅🖼 / 🎥 Visual Articulation
 ```bash
-# preprocess
+# preprocess, this step took 1 hour 54 minutes to finish
 python articulate_anything/preprocess/preprocess_partnet.py parallel=4 modality=image
+
+# run
+python articulate.py modality=video prompt="datasets/in-the-wild-dataset/videos/suitcase.mp4" out_dir=results/video/suitcase
 
 ```
